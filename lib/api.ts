@@ -9,8 +9,24 @@ async function handleResponse(res: Response) {
 }
 
 export async function getCats() {
-  const res = await fetch(`${API_URL}/cats/`);
-  return handleResponse(res);
+  try {
+    const res = await fetch(`${API_URL}/cats/`);
+    
+    if (res.status >= 200 && res.status < 300) {
+      try {
+        const data = await res.json();
+        return Array.isArray(data) ? data : [];
+      } catch (jsonError) {
+        return [];
+      }
+    }
+    
+    return [];
+    
+  } catch (error) {
+    console.error('Network error:', error);
+    return [];
+  }
 }
 
 export async function createCat(cat: any) {
