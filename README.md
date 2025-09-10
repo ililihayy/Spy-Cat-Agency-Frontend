@@ -52,7 +52,3 @@ A frontend application for managing spy cats, built with Next.js and TypeScript.
 ## API Integration
 
 This frontend connects to the Spy Cat Agency API. Ensure your backend is running on the configured API URL before starting the application.
-
-## License
-
-MIT License
